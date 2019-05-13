@@ -25,29 +25,31 @@
           <div class="box-header with-border">
             <h3 class="box-title">Titles</h3>
           </div>
+          @if(count($errors) > 0)
+            @foreach($errors -> all() as $error)
+              <p class="alert alert-danger">{{ $error }}</p>
+            @endforeach
+          @endif
           <!-- /.box-header -->
           <!-- form start -->
-          <form role="form">
+          <form role="form" action="{{ route('post.store') }}" method="post">
+            {{ csrf_field() }}
             <div class="box-body">
               <div class="col-lg-6">
                 <div class="form-group">
                   <label for="title">Post Title</label>
                   <input type="text" class="form-control" id="title" name="title" placeholder="Title">
-
+                </div>
 
                   <div class="form-group">
                     <label for="subtitle">Post Sub Title</label>
                     <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Sub Title">
-
+                  </div>
 
                     <div class="form-group">
                       <label for="slug">Post Slug</label>
                       <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug">
                       </div>
-                  </div>
-            </div>
-
-
               </div>
 
               <div class="form-group">
@@ -79,9 +81,9 @@
               </div>
               <!-- /.box-header -->
               <div class="box-body pad">
-                <form>
+                <div>
                   <textarea name="body" class="textarea" placeholder="Place some text here" style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                </form>
+                </div>
               </div>
             </div>
           </div>
@@ -91,8 +93,6 @@
             </div>
           </form>
         </div>
-
-
       <!-- /.col-->
     </div>
     <!-- ./row -->
