@@ -35,7 +35,7 @@
         </div>
       </div>
       <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped">
+        <table id="example1" class="table table-bordered table-stripe">
           <thead>
           <tr>
             <th>S.No</th>
@@ -54,8 +54,20 @@
             <th>{{ $post->subtitle }}</th>
             <th>{{ $post->slug }}</th>
             <th>{{ $post->created_at }}</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th><a href="{{ route('post.edit', $post->id) }}"><span class="glyphicon glyphicon-edit"></span></a></th>
+            <th>
+                <form id="delete-form-{{ $post->id }}" method="post" action="{{ route('post.destroy', $post->id) }}" style="display: none">
+                  {{ csrf_field() }}
+                  {{ method_field('DELETE') }}
+                </form>
+                <a href="{{ route('post.index') }}" onclick="
+                if(confirm('Are you sure, You want to delete this?'))
+                  {
+                    event.preventDefault();document.getElementById('delete-form-{{ $post-> id }}').submit()}
+                else
+                  {
+                    event.preventDefault()}"><span class="glyphicon glyphicon-trash"></span></a>
+            </th>
           </tr>
             @endforeach;
             <tr>
