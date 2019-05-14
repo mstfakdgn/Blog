@@ -26,8 +26,10 @@
             <h3 class="box-title">Titles</h3>
           </div>
           <!-- /.box-header -->
+          @include('includes.messages')
           <!-- form start -->
-          <form role="form">
+          <form role="form" action="{{ route('tag.store') }}" method="post">
+            {{ csrf_field() }}
             <div class="box-body">
               <div class="col-lg-offset-3 col-lg-6">
                 <div class="form-group">
@@ -44,6 +46,7 @@
                   </div>
                   <div class="form-group">
                     <button type="submit" class="btn btn-primary">Submit</button>
+                    <a href='{{route( 'tag.index' )}}' class="btn btn-warning">Back</a>
                   </div>
             </div>
 
