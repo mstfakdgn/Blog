@@ -12,3 +12,5 @@ yarn-error.log
 .editorconfig
 #RAW FILES####
 Raw files/
+
+composer.lock
