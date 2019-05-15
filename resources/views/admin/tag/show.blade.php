@@ -62,7 +62,7 @@
                 <th>Delete</th>
               </tr>
                 @endforeach;
-                
+
                 </tbody>
               <tfoot>
                 <tr>
