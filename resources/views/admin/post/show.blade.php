@@ -50,13 +50,13 @@
           <tbody>
             @foreach($posts as $post)
             <tr>
-              <th>{{ $loop->index+1 }}</th>
-              <th>{{ $post->title }}</th>
-              <th>{{ $post->subtitle }}</th>
-              <th>{{ $post->slug }}</th>
-              <th>{{ $post->created_at }}</th>
-              <th><a href="{{ route('post.edit', $post->id) }}"><span class="glyphicon glyphicon-edit"></span></a></th>
-              <th>
+              <td>{{ $loop->index+1 }}</td>
+              <td>{{ $post->title }}</td>
+              <td>{{ $post->subtitle }}</td>
+              <td>{{ $post->slug }}</td>
+              <td>{{ $post->created_at }}</td>
+              <td><a href="{{ route('post.edit', $post->id) }}"><span class="glyphicon glyphicon-edit"></span></a></td>
+              <td>
                   <form id="delete-form-{{ $post->id }}" method="post" action="{{ route('post.destroy', $post->id) }}" style="display: none">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
@@ -68,7 +68,7 @@
                   else
                     {
                       event.preventDefault()}"><span class="glyphicon glyphicon-trash"></span></a>
-              </th>
+              </td>
           </tr>
             @endforeach;
 
