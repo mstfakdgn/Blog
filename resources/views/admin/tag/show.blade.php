@@ -55,11 +55,23 @@
               </thead>
               <tbody>
                 @foreach($tags as $tag)
-                <th>{{ $loop->index+1 }}</th>
-                <th>{{ $tag->name }}</th>
-                <th>{{ $tag->slug }}</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <td>{{ $loop->index+1 }}</td>
+                <td>{{ $tag->name }}</td>
+                <td>{{ $tag->slug }}</td>
+                <td><a href="{{ route('tag.edit',$tag->id) }}"><span class="glyphicon glyphicon-edit"><a/></span></td>
+                <td>
+                  <form id="delete-form-{{ $tag->id }}" method="post" action="{{ route('tag.destroy', $tag->id) }}" style="display: none">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+                  </form>
+                  <a href="{{ route('tag.index') }}" onclick="
+                  if(confirm('Are you sure, You want to delete this?'))
+                    {
+                      event.preventDefault();document.getElementById('delete-form-{{ $tag-> id }}').submit()}
+                  else
+                    {
+                      event.preventDefault()}"><span class="glyphicon glyphicon-trash"></span></a>
+                </td>
               </tr>
                 @endforeach;
 
@@ -97,14 +109,7 @@
   <script>
   $(function () {
     $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
+
   });
 </script>
 @endsection

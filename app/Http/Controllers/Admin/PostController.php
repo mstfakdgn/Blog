@@ -73,6 +73,7 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = post::where('id',$id)->first();
+      
         return view('admin.post.edit',compact('post'));
     }
 

@@ -53,14 +53,24 @@
                 </thead>
                 <tbody>
                   @foreach($categories as $category)
-                  <th>{{ $loop->index+1 }}</th>
-                  <th>{{ $category->name }}</th>
-                  <th>{{ $category->slug }}</th>
-                  <th>Edit</th>
-                  <th>Delete</th>
+                  <td>{{ $loop->index+1 }}</td>
+                  <td>{{ $category->name }}</td>
+                  <td>{{ $category->slug }}</td>
+                  <td><a href="{{ route('category.edit', $category->id) }}"><span class="glyphicon glyphicon-edit"></span></a></td>
+                  <td><form id="delete-form-{{ $category->id }}" method="post" action="{{ route('category.destroy', $category->id) }}" style="display: none">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+                  </form>
+                  <a href="{{ route('category.index') }}" onclick="
+                  if(confirm('Are you sure, You want to delete this?'))
+                    {
+                      event.preventDefault();document.getElementById('delete-form-{{ $category-> id }}').submit()}
+                  else
+                    {
+                      event.preventDefault()}"><span class="glyphicon glyphicon-trash"></span></a></td>
                 </tr>
                   @endforeach;
-                  
+
                   </tbody>
                 <tfoot>
                   <tr>
@@ -94,14 +104,7 @@
   <script>
   $(function () {
     $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
+
   });
 </script>
 @endsection
