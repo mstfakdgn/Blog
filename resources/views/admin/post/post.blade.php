@@ -1,5 +1,9 @@
 @extends('admin.layouts.app')
 
+@section('headSection')
+  <link rel="stylesheet" href="{{asset('admin/plugins/select2/select2.min.css')}}"
+@endsection
+
 @section('main-content')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -48,18 +52,46 @@
                       </div>
               </div>
 
-              <div class="form-group">
-                <label for="image">File input</label>
-                <input name="image" type="file" id="image">
+              <div class="col-lg-6">
+                  <div class="form-group">
+                    <div class="pull-right">
+                      <label for="image">File input</label>
+                      <input name="image" type="file" id="image">
+                      <br>
+                    </div>
+                    <div class="pull-left">
+                      <div  class="checkbox">
+                        <label>
+                          <input type="checkbox" name="status" value="1" > Publish
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="col-lg-6">
+                  <div class="form-group" style="margin-top:8px">
+                      <label>Select Tags</label>
+                      <select class="form-control select2" multiple="multiple"
+                      data-placeholder="Select a State" style="width: 100%;"
+                      name="tags[]">
+                        @foreach($tags as $tag)
+                          <option value="{{$tag->id}}">{{ $tag->name }}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Select Category</label>
+                        <select class="form-control select2" multiple="multiple"
+                         data-placeholder="Select a State" style="width: 100%;"
+                         name="categories[]">
+                          @foreach($categories as $category)
+                            <option value="{{$category->id}}">{{ $category->name }}</option>
+                          @endforeach
+                        </select>
+                      </div>
+                    </div>
 
 
-              </div>
-              <br>
-              <div  class="checkbox">
-                <label>
-                  <input name="status" type="checkbox"> Publish
-                </label>
-              </div>
             </div>
             <!-- /.box-body -->
 
@@ -98,4 +130,13 @@
 </div>
 <!-- /.content-wrapper -->
 
+@endsection
+
+@section('footerSection')
+  <script src="{{ asset('admin/plugins/select2/select2.full.min.js') }}"></script>
+  <script>
+    $(document).ready(function(){
+      $(".select2").select2();
+    });
+  </script>
 @endsection
