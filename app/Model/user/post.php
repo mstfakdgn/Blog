@@ -8,12 +8,12 @@ class post extends Model
 {
     public function tags(){
 
-        return $this->belongstoMany('App\Model\user\tag','post_tags');
+        return $this->belongstoMany('App\Model\user\tag','post_tags')->withtimestamps();
 
     }
     public function categories(){
 
-        return $this->belongstoMany('App\Model\user\category','category_posts');
+        return $this->belongstoMany('App\Model\user\category','category_posts')->withtimestamps();
 
     }
 }

@@ -76,7 +76,13 @@
                       data-placeholder="Select a State" style="width: 100%;"
                       name="tags[]">
                         @foreach($tags as $tag)
-                          <option value="{{$tag->id}}">{{ $tag->name }}</option>
+                          <option value="{{ $tag->id }}"
+                            @foreach ($post->tags as $postTag)
+                              @if($postTag->id == $tag->id)
+                                selected
+                              @endif
+                            @endforeach
+                            >{{ $tag->name }}</option>
                         @endforeach
                       </select>
                     </div>
@@ -86,7 +92,13 @@
                          data-placeholder="Select a State" style="width: 100%;"
                          name="categories[]">
                           @foreach($categories as $category)
-                            <option value="{{$category->id}}">{{ $category->name }}</option>
+                            <option value="{{ $category->id }}"
+                                @foreach ($post->categories as $categoryPost)
+                                  @if($categoryPost->id == $category->id)
+                                    selected
+                                  @endif
+                                @endforeach
+                            >{{ $category->name }}</option>
                           @endforeach
                         </select>
                       </div>
@@ -113,9 +125,9 @@
               <!-- /.box-header -->
               <div class="box-body pad">
                 <div>
-                  <textarea name="body" class="textarea" placeholder="Place some text here" style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
+                  <textarea name="editor1" style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
                     {{ $post->body }}
-                  </textarea>
+                    </textarea>
                 </div>
               </div>
             </div>
@@ -144,4 +156,16 @@
       $(".select2").select2();
     });
   </script>
+  <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
+
+  <script>
+    $(function () {
+      // Replace the <textarea id="editor1"> with a CKEditor
+      // instance, using default configuration.
+      CKEDITOR.replace('editor1');
+      //bootstrap WYSIHTML5 - text editor
+      $(".textarea").wysihtml5();
+    });
+  </script>
+
 @endsection

@@ -36,11 +36,10 @@
 
  <script src="{{ asset('admin/dist/js/app.min.js') }}"></script>
 
-
-
  <script src="{{ asset('admin/dist/js/demo.js') }}"></script>
-</footer>
 
+ 
+ </footer>
 
 @section('footerSection')
 @show

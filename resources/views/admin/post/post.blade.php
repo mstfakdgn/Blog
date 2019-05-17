@@ -110,7 +110,9 @@
               <!-- /.box-header -->
               <div class="box-body pad">
                 <div>
-                  <textarea name="body" class="textarea" placeholder="Place some text here" style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                  <textarea name="editor1" style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
+
+                    </textarea>
                 </div>
               </div>
             </div>
@@ -137,6 +139,18 @@
   <script>
     $(document).ready(function(){
       $(".select2").select2();
+    });
+  </script>
+
+  <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
+
+  <script>
+    $(function () {
+      // Replace the <textarea id="editor1"> with a CKEditor
+      // instance, using default configuration.
+      CKEDITOR.replace('editor1');
+      //bootstrap WYSIHTML5 - text editor
+      $(".textarea").wysihtml5();
     });
   </script>
 @endsection
