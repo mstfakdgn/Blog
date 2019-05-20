@@ -110,7 +110,7 @@
               <!-- /.box-header -->
               <div class="box-body pad">
                 <div>
-                  <textarea name="editor1" style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
+                  <textarea name="body" style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
 
                     </textarea>
                 </div>
@@ -148,7 +148,7 @@
     $(function () {
       // Replace the <textarea id="editor1"> with a CKEditor
       // instance, using default configuration.
-      CKEDITOR.replace('editor1');
+      CKEDITOR.replace('body');
       //bootstrap WYSIHTML5 - text editor
       $(".textarea").wysihtml5();
     });
