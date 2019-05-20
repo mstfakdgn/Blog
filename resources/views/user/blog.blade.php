@@ -25,6 +25,12 @@
                 {{ $post->created_at->diffForHumans() }}</p>
             </div>
         @endforeach
+
+        <ul class="pager">
+          <li class="next">
+              {{ $posts->links() }}
+          </li>
+        </ul>
       <hr>
     </div>
   </div>
