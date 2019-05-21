@@ -7,9 +7,15 @@ use App\Http\Controllers\Controller;
 use App\Model\user\post;
 use App\Model\user\tag;
 use App\Model\user\category;
+use Illuminate\Support\Facades\Config;
 
 class PostController extends Controller
 {
+  private $defaultImage;
+
+    public function __construct() {
+      $this->defaultImage = Config::get('blog.default_image');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -48,12 +54,14 @@ class PostController extends Controller
         'subtitle'=>'required',
         'slug'=>'required',
         'body'=>'required',
-        'image'=>'required',
+        'image'=>'string',
       ]);
 
       if($request->hasFile('image')){
         //this public inside  storage-app 
         $imageName = $request->image->store('public');
+      }else{
+        $imageName = $this->defaultImage;
       }
 
       $post = new post;
@@ -114,13 +122,16 @@ class PostController extends Controller
         'subtitle'=>'required',
         'slug'=>'required',
         'body'=>'required',
-        'image'=>'required',
+        'image'=>'string'
       ]);
 
       if($request->hasFile('image')){
         //this public inside  storage-app 
         $imageName = $request->image->store('public');
+      }else{
+        $imageName = $this->defaultImage;
       }
+
 
       $post =post::find($id);
       $post->image = $imageName;
