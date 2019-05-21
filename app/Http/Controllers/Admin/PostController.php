@@ -54,7 +54,6 @@ class PostController extends Controller
         'subtitle'=>'required',
         'slug'=>'required',
         'body'=>'required',
-        'image'=>'string',
       ]);
 
       if($request->hasFile('image')){
@@ -122,19 +121,16 @@ class PostController extends Controller
         'subtitle'=>'required',
         'slug'=>'required',
         'body'=>'required',
-        'image'=>'string'
       ]);
 
       if($request->hasFile('image')){
         //this public inside  storage-app 
         $imageName = $request->image->store('public');
-      }else{
-        $imageName = $this->defaultImage;
       }
 
 
       $post =post::find($id);
-      $post->image = $imageName;
+      $post->image = isset($imageName) ? $imageName: $post->image;
       $post->title = $request->title;
       $post->subtitle = $request->subtitle;
       $post->slug = $request->slug;
