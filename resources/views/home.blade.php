@@ -13,8 +13,8 @@
 <article>
   <div class="container">
     <div class="row">
-     
-     Welcome to My Blog
+      
+        Welcome to Blog
       
     </div>
   </div>

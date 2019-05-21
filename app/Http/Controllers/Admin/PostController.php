@@ -127,8 +127,11 @@ class PostController extends Controller
         //this public inside  storage-app 
         $imageName = $request->image->store('public');
       }
-
-
+      //all the posts have to have pictures
+      /*else{
+        $imageName = $this->defaultImage;
+      }*/
+      
       $post =post::find($id);
       $post->image = isset($imageName) ? $imageName: $post->image;
       $post->title = $request->title;
