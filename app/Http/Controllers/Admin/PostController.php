@@ -11,9 +11,12 @@ use Illuminate\Support\Facades\Config;
 
 class PostController extends Controller
 {
+  
+    
   private $defaultImage;
 
     public function __construct() {
+      
       $this->defaultImage = Config::get('blog.default_image');
     }
     /**

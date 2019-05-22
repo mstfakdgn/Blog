@@ -8,6 +8,8 @@ use App\Model\user\category;
 
 class CategoryController extends Controller
 {
+    
+
     /**
      * Display a listing of the resource.
      *

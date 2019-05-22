@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/lib/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('admin/dist/css/AdminLTE.min.css') }}">
-  <')}}"-- iCheck -->
+  
   <link rel="stylesheet" href="{{ asset('admin/plugins/iCheck/square/blue.css') }}">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -33,7 +33,7 @@
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
 
-    @include('includes.messages')git 
+    @include('includes.messages')
 
     <form action="{{ route('admin.login') }}" method="post">
     {{ csrf_field() }}   
