@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
 
         'api' => [
             'driver' => 'token',
@@ -64,11 +69,15 @@ return [
     | Supported: "database", "eloquent"
     |
     */
-
+    //model yolunu değiştirip user modelini model user içine taşı
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Model\user\User::class,
+        ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Model\admin\admin::class,
         ],
 
         // 'users' => [
@@ -95,6 +104,11 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'admins' => [
+            'provider' => 'admins',
             'table' => 'password_resets',
             'expire' => 60,
         ],
