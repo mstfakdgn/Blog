@@ -28,8 +28,9 @@
           <!-- /.box-header -->
           @include('includes.messages')
           <!-- form start -->
-          <form role="form" action="{{ route('role.update') }}" method="post">
+          <form role="form" action="{{ route('role.update',$role->id )  }}" method="post">
             {{ csrf_field() }}
+            {{ method_field('PATCH') }}
             <div class="box-body">
               <div class="col-lg-offset-3 col-lg-6">
                 

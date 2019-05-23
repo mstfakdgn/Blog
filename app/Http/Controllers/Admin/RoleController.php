@@ -82,14 +82,15 @@ class RoleController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'name'=>'required',
+            'name'=>'required|max:50|unique:roles',
             
           ]);
     
           $role =role::find($id);
           $role->name = $request->name;
+          
           $role->save();
-          dd($role);
+    
           return redirect(route('role.index'));
     }
 
