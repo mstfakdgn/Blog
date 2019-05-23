@@ -25,9 +25,9 @@
     <!-- Default box -->
     <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title">Users for Admin</h3>
+        <h3 class="box-title">Roles</h3>
 
-        <a class="col-lg-offset-5 btn btn-success" href="{{route('user.create')}}">Add New</a>
+        <a class="col-lg-offset-5 btn btn-success" href="{{route('role.create')}}">Add New</a>
 
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -47,26 +47,25 @@
               <thead>
               <tr>
                 <th>S.No</th>
-                <th>user Name</th>
+                <th>Role Name</th>
                 <th>Edit</th>
                 <th>Delete</th>
               </tr>
               </thead>
               <tbody>
-                @foreach($users as $users)
+                @foreach($roles as $role)
                 <td>{{ $loop->index+1 }}</td>
-                <td>{{ $users->name }}</td>
-                
-                <td><a href="{{ route('user.edit',$users->id) }}"><span class="glyphicon glyphicon-edit"><a/></span></td>
+                <td>{{ $role->name }}</td>
+                <td><a href="{{ route('role.edit',$role->id) }}"><span class="glyphicon glyphicon-edit"></a></span></td>
                 <td>
-                  <form id="delete-form-{{ $users->id }}" method="post" action="{{ route('user.destroy', $users->id) }}" style="display: none">
+                  <form id="delete-form-{{ $role->id }}" method="post" action="{{ route('role.destroy', $role->id) }}" style="display: none">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
                   </form>
-                  <a href="{{ route('user.index') }}" onclick="
+                  <a href="{{ route('role.index') }}" onclick="
                   if(confirm('Are you sure, You want to delete this?'))
                     {
-                      event.preventDefault();document.getElementById('delete-form-{{ $users-> id }}').submit()}
+                      event.preventDefault();document.getElementById('delete-form-{{ $role-> id }}').submit()}
                   else
                     {
                       event.preventDefault()}"><span class="glyphicon glyphicon-trash"></span></a>
@@ -78,7 +77,7 @@
               <tfoot>
                 <tr>
                   <th>S.No</th>
-                  <th>user Name</th>
+                  <th>Role Name</th>
                   <th>Edit</th>
                   <th>Delete</th>
                 </tr>
