@@ -81,7 +81,14 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $roles = role::all();
+        $user = admin::where('id',$id)->first();
+        return view ('admin.user.edit',compact('roles','user'));  
+        
+        
+        //return dd($user);
+        //return view('admin.user.edit',compact('user'));
+        
     }
 
     /**
