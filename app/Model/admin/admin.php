@@ -10,3 +10,4 @@ class admin extends Authenticatable
 {
     use Notifiable;
 }
+

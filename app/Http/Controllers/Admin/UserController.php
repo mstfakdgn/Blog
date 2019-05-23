@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\admin\admin;
+use App\Model\admin\role;
+
 
 class UserController extends Controller
 {
@@ -28,7 +30,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view ('admin.user.create');
+        $roles = role::all();
+        return view ('admin.user.create',compact('roles'));
     }
 
     /**
@@ -39,7 +42,25 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name'=>'required',
+            'email'=>'required',
+            'password'=>'required',
+            //'confirmpassword'=>'required',
+            //'role[]'=>'required',
+          ]);
+          
+          
+          $user= new admin;
+          $user->name=$request->name;
+          $user->email=$request->email;
+          $user->password=bcrypt($request->password);
+          
+          //$user->confirmpassword=$request->confirmpassword;
+          //$user->role[]=$request->role[];
+          $user->save();
+
+          return redirect(route('user.index'));
     }
 
     /**

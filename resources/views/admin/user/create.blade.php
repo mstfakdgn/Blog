@@ -38,23 +38,26 @@
                   <input type="text" class="form-control" id="name" name="name" placeholder="New User Name">
                     
                   <label for="email">Email</label>
-                  <input type="text" class="form-control" id="slug" name="slug" placeholder="User Email">
+                  <input type="text" class="form-control" id="slug" name="email" placeholder="User Email">
 
                   <label for="password">Password</label>
-                  <input type="text" class="form-control" id="slug" name="slug" placeholder="User Password">
+                  <input type="text" class="form-control" id="slug" name="password" placeholder="User Password">
 
                   <label for="confirmpassword">Confirm Password</label>
-                  <input type="text" class="form-control" id="slug" name="slug" placeholder="User Confirm Password">
+                  <input type="text" class="form-control" id="slug" name="confirmpassword" placeholder="User Confirm Password">
                   
-                  <label for="selectrole">Select Role</label>
-                  <select name="role" id="" class="form-control">
-                    <option value="0">Editor</option>
-                    <option value="1">Publisher</option>
-                    <option value="2">Writer</option>
-                  </select>
-                  <br>  
+                  <label>Assign Role</label>
+                  <div class="row">    
+                    @foreach($roles as $role)
+                      <div class="col-lg-4">
+                        <div class="checkbox">
+                          <label><input name="role[]" type="checkbox" value ="{{$role->id}}">{{$role->name}}</label>
+                          </div>    
+                      </div>
+                    @endforeach  
+                  </div>
                   <button type="submit" class="btn btn-primary">Submit</button>
-                  <a href="{{route( 'tag.index' )}}" class="btn btn-warning">Back</a>
+                  <a href="{{route( 'user.index' )}}" class="btn btn-warning">Back</a>
                 
                 </div>  
               </div>
