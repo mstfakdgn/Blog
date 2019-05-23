@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ModifyColoumnsInAdmins extends Migration
+class CloumnInAdmins extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +14,7 @@ class ModifyColoumnsInAdmins extends Migration
     public function up()
     {
         Schema::table('admins', function (Blueprint $table) {
-            
-                //
-                $table->boolean('status')->nullable()->change();
-                $table->string('phone')->nullable()->change();
-                  
+            $table->string('confirmpassword');
         });
     }
 
@@ -30,10 +26,7 @@ class ModifyColoumnsInAdmins extends Migration
     public function down()
     {
         Schema::table('admins', function (Blueprint $table) {
-            
-                $table->boolean('status')->nullable(false)->change();
-                $table->string('phone')->nullable(false)->change();
-            
+            $table->dropColumn('confirmpassword');
         });
     }
 }

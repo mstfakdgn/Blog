@@ -46,7 +46,7 @@ class UserController extends Controller
             'name'=>'required',
             'email'=>'required',
             'password'=>'required',
-            //'confirmpassword'=>'required',
+            'confirmpassword'=>'required',
             //'role[]'=>'required',
           ]);
           
@@ -55,8 +55,7 @@ class UserController extends Controller
           $user->name=$request->name;
           $user->email=$request->email;
           $user->password=bcrypt($request->password);
-          
-          //$user->confirmpassword=$request->confirmpassword;
+          $user->confirmpassword=bcrypt($request->confirmpassword);
           //$user->role[]=$request->role[];
           $user->save();
 
