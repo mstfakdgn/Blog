@@ -23,42 +23,27 @@
         <!-- general form elements -->
         <div class="box box-primary">
           <div class="box-header with-border">
-            <h3 class="box-title">Titles</h3>
+            <h3 class="box-title">Add Roles</h3>
           </div>
           <!-- /.box-header -->
           @include('includes.messages')
           <!-- form start -->
-          <form role="form" action="{{ route('tag.update',$tag->id ) }}" method="post">
+          <form role="form" action="{{ route('role.update') }}" method="post">
             {{ csrf_field() }}
-            {{ method_field('PATCH') }}
             <div class="box-body">
               <div class="col-lg-offset-3 col-lg-6">
+                
                 <div class="form-group">
-                  <label for="name">Tag title</label>
-                  <input type="text" class="form-control" id="name" name="name" placeholder="Tag title" value="{{ $tag->name }}">
-
-
-                  <div class="form-group">
-                    <label for="slug">Tag Slug</label>
-                    <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug" value="{{ $tag->slug }}">
-
-
-
-                  </div>
-                  <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <a href='{{route( 'tag.index' )}}' class="btn btn-warning">Back</a>
-                  </div>
-            </div>
-
-
+                  <label for="name">Name</label>
+                  <input value="{{ $role->name }}" type="text" class="form-control" id="name" name="name" placeholder="Role Name">
+                    
+                  <br>  
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <a href="{{route( 'role.index' )}}" class="btn btn-warning">Back</a>
+                
+                </div>  
               </div>
-
-
-            </div>
-
-
-
+            </div>      
           </form>
         </div>
 

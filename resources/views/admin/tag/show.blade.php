@@ -58,7 +58,7 @@
                 <td>{{ $loop->index+1 }}</td>
                 <td>{{ $tag->name }}</td>
                 <td>{{ $tag->slug }}</td>
-                <td><a href="{{ route('tag.edit',$tag->id) }}"><span class="glyphicon glyphicon-edit"><a/></span></td>
+                <td><a href="{{ route('tag.edit',$tag->id) }}"><span class="glyphicon glyphicon-edit"></a></span></td>
                 <td>
                   <form id="delete-form-{{ $tag->id }}" method="post" action="{{ route('tag.destroy', $tag->id) }}" style="display: none">
                     {{ csrf_field() }}

@@ -56,7 +56,7 @@
                 @foreach($roles as $role)
                 <td>{{ $loop->index+1 }}</td>
                 <td>{{ $role->name }}</td>
-                <td><a href="{{ route('role.edit',$role->id) }}"><span class="glyphicon glyphicon-edit"></a></span></td>
+                <td><a href="{{ route('role.edit',$role->id) }}"><span class="glyphicon glyphicon-edit"><a></span></td>
                 <td>
                   <form id="delete-form-{{ $role->id }}" method="post" action="{{ route('role.destroy', $role->id) }}" style="display: none">
                     {{ csrf_field() }}
