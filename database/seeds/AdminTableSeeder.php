@@ -15,6 +15,7 @@ class AdminTableSeeder extends Seeder
             'name' => 'pike',
             'email' =>'pike@gmail.com',
             'password' => Hash::make('12345678') ,
+            'confirmpassword' => Hash::make('12345678'),
         ]);
     }
 }

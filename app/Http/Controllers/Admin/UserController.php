@@ -83,6 +83,8 @@ class UserController extends Controller
     {
         $roles = role::all();
         $user = admin::where('id',$id)->first();
+        
+
         return view ('admin.user.edit',compact('roles','user'));  
         
         
@@ -111,6 +113,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        admin::where('id',$id)->delete();
+        return redirect()->back();
     }
 }
