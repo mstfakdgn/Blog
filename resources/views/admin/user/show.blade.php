@@ -1,5 +1,8 @@
 @extends('admin.layouts.app')
 
+@section('headSection')
+  <link rel="stylesheet" href="{{asset('admin/plugins/datatables/dataTables.bootstrap.css')}}">
+@endsection
 
 @section('main-content')
 <div class="content-wrapper">
@@ -22,7 +25,9 @@
     <!-- Default box -->
     <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title">Title</h3>
+        <h3 class="box-title">Users for Admin</h3>
+
+        <a class="col-lg-offset-5 btn btn-success" href="{{route('tag.create')}}">Add New</a>
 
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -32,7 +37,56 @@
         </div>
       </div>
       <div class="box-body">
-        Start creating your amazing application!
+        <div class="box">
+          <div class="box-header">
+            <h3 class="box-title">Data Table With Full Features</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <table id="example1" class="table table-bordered table-striped">
+              <thead>
+              <tr>
+                <th>S.No</th>
+                <th>Tag Name</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+              </thead>
+              <tbody>
+                @foreach($users as $users)
+                <td>{{ $loop->index+1 }}</td>
+                <td>{{ $users->name }}</td>
+                
+                <td><a href="{{ route('tag.edit',$users->id) }}"><span class="glyphicon glyphicon-edit"><a/></span></td>
+                <td>
+                  <form id="delete-form-{{ $users->id }}" method="post" action="{{ route('tag.destroy', $users->id) }}" style="display: none">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+                  </form>
+                  <a href="{{ route('tag.index') }}" onclick="
+                  if(confirm('Are you sure, You want to delete this?'))
+                    {
+                      event.preventDefault();document.getElementById('delete-form-{{ $users-> id }}').submit()}
+                  else
+                    {
+                      event.preventDefault()}"><span class="glyphicon glyphicon-trash"></span></a>
+                </td>
+              </tr>
+                @endforeach;
+
+                </tbody>
+              <tfoot>
+                <tr>
+                  <th>S.No</th>
+                  <th>Tag Name</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <!-- /.box-body -->
+        </div>
       </div>
       <!-- /.box-body -->
       <div class="box-footer">
@@ -45,4 +99,15 @@
   </section>
   <!-- /.content -->
 </div>
+@endsection
+
+@section('footerSection')
+  <script src="{{asset('admin/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+  <script src="{{asset('admin/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+  <script>
+  $(function () {
+    $("#example1").DataTable();
+
+  });
+</script>
 @endsection
