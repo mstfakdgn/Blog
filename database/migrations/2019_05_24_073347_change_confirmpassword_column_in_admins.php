@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CloumnInAdmins extends Migration
+class ChangeConfirmpasswordColumnInAdmins extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class CloumnInAdmins extends Migration
     public function up()
     {
         Schema::table('admins', function (Blueprint $table) {
-            $table->string('confirmpassword')->nullable();
+            $table->string('confirmpassword')->nullable(false)->change();
         });
     }
 
@@ -26,7 +26,7 @@ class CloumnInAdmins extends Migration
     public function down()
     {
         Schema::table('admins', function (Blueprint $table) {
-            $table->dropColumn('confirmpassword')->nullable(false);
+            $table->string('confirmpassword')->nullable()->change();
         });
     }
 }
