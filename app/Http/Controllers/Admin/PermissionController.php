@@ -91,7 +91,7 @@ class PermissionController extends Controller
           
           $permission->save();
     
-          return redirect(route('permission.index'))->with('message','Permission updated succesfully');
+          return redirect(route('permission.index'))->with('message','Permission Updated Succesfully');
 
     }
 
