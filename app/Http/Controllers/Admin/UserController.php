@@ -83,7 +83,7 @@ class UserController extends Controller
     {
         $roles = role::all();
         $user = admin::where('id',$id)->first();
-        
+         
 
         return view ('admin.user.edit',compact('roles','user'));  
         

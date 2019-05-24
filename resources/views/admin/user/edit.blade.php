@@ -41,10 +41,10 @@
                   <input value="{{$user->email}}" type="text" class="form-control" id="slug" name="email" placeholder="User Email">
 
                   <label for="password">Password</label>
-                  <input value="{{$user->password}}" type="text" class="form-control" id="slug" name="password" placeholder="User Password">
+                  <input  type="text" class="form-control" id="slug" name="password" placeholder="User Password">
 
                   <label for="confirmpassword">Confirm Password</label>
-                  <input value="{{$user->confirmpassword}}" type="text" class="form-control" id="slug" name="confirmpassword" placeholder="User Confirm Password">
+                  <input  type="text" class="form-control" id="slug" name="confirmpassword" placeholder="User Confirm Password">
                   
                   <label>Assign Role</label>
                   <div class="row">    

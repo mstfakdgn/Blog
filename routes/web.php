@@ -28,6 +28,8 @@ Route::group(['namespace' =>'Admin','middleware'=>'auth:admin'],function(){
   Route::resource('admin/user','UserController');
   //Roles routes
   Route::resource('admin/role','RoleController');
+  //Permission routes
+  Route::resource('admin/permission','PermissionController');
   //Post routes
   Route::resource('admin/post','PostController');
   //Tag routes
